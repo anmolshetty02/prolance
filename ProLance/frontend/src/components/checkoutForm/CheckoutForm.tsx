@@ -60,7 +60,7 @@ const CheckoutForm = () => {
     const { error } = await stripe.confirmPayment({
       elements,
       confirmParams: {
-        return_url: "http://localhost:3001/success",
+        return_url: "https://prolance-omega.vercel.app/success" // <-- Adjust based on your actual deployed frontend URL
       },
     });
 

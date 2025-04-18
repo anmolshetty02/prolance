@@ -10,7 +10,7 @@ export default function Activate() {
   useEffect(() => {
     const activateAccount = async () => {
       try {
-        const response = await axios.get(`http://localhost:3000/api/auth/activate/${token}`);
+        const response = await axios.get(`https://prolance-backend.onrender.com/api/auth/activate/${token}`)
         console.log("Activation response:", response.data);
         alert("Account activated successfully!");
         navigate('/login');
