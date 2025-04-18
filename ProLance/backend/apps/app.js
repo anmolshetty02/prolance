@@ -7,7 +7,22 @@ import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
 
 const initialize = (app) => {
-    app.use(cors({origin:"http://localhost:3001", credentials:true}));
+    const allowedOrigins = [
+        "http://localhost:3001",
+        "https://prolance-omega.vercel.app"
+      ];
+      
+      app.use(cors({
+        origin: function (origin, callback) {
+          if (!origin || allowedOrigins.includes(origin)) {
+            callback(null, true);
+          } else {
+            callback(new Error("Not allowed by CORS"));
+          }
+        },
+        credentials: true
+      }));
+    
     app.use(express.json());
     app.use(cookieParser());
     //app.use(express.urlencoded());
